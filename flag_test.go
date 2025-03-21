@@ -1230,6 +1230,10 @@ func TestPrintDefaults(t *testing.T) {
 
 	var cv customValue
 	fs.Var(&cv, "custom", "custom Value implementation")
+	err := cv.Set("42")
+	if err != nil {
+		t.Error("Error setting value in customValue", err)
+	}
 
 	cv2 := customValue(10)
 	fs.VarP(&cv2, "customP", "", "a VarP with default")
